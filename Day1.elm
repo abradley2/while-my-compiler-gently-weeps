@@ -27,7 +27,6 @@ parseCaptcha input =
                 |> toString
                 |> split ""
                 |> (\list -> list ++ [ Maybe.withDefault "10" (List.head list) ])
-                |> Debug.log "dis list"
                 |> List.foldl
                     (\currentNum ( prevNum, total ) ->
                         let
@@ -37,7 +36,7 @@ parseCaptcha input =
                                 else
                                     total
                         in
-                            ( currentNum, (Debug.log "newTotal " newTotal) )
+                            ( currentNum, newTotal )
                     )
                     ( "10", 0 )
     in
